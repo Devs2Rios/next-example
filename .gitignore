@@ -39,3 +39,6 @@ jspm_packages
 
 # Misc
 .DS_Store
+
+# Environment
+.env*
