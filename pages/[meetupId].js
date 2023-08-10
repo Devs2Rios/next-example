@@ -1,11 +1,20 @@
 import { MongoClient, ObjectId } from 'mongodb';
 import { dbUri } from '../config';
+import Metadata from '../components/meta/Metadata';
 import MeetupDetail from '../components/meetups/MeetupDetail';
 
 export default function Meetup({ meetup, error }) {
     if (error) return <p style={{ textAlign: 'center' }}>Error: {error} </p>; {/* Appears if fallback is true */ }
     if (!meetup && !error) return <p style={{ textAlign: 'center' }}>Could not find meetup</p>;
-    return <MeetupDetail meetup={meetup} />;
+    return (
+        <>
+            <Metadata
+                title={`Meetup - ${meetup.title}`}
+                description={meetup.description}
+            />
+            <MeetupDetail meetup={meetup} />
+        </>
+    );
 }
 
 export async function getStaticPaths(context) {

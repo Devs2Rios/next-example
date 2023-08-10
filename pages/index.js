@@ -1,9 +1,18 @@
 import { MongoClient } from 'mongodb';
 import { dbUri } from '../config';
+import Metadata from '../components/meta/Metadata';
 import MeetupList from "../components/meetups/MeetupList";
 
 export default function Home({ meetups }) {
-    return <MeetupList meetups={meetups} />;
+    return (
+        <>
+            <Metadata
+                title='Meetups'
+                description='The best meetups around the world'
+            />
+            <MeetupList meetups={meetups} />
+        </>
+    );
 }
 
 // Next looks for this function to get static props and pre-render the data
